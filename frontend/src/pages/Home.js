@@ -12,6 +12,14 @@ const REVIEWS = gql`
           Name
           Rating
           Body
+          categories {
+            data {
+              id
+              attributes {
+                Category
+              }
+            }
+          }
         }
       }
     }
@@ -24,6 +32,8 @@ export const Home = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
+  console.log(data);
+
   return (
     <div>
       {data &&
@@ -32,7 +42,9 @@ export const Home = () => {
             <div className="rating">{review.attributes.Rating}</div>
             <h2>{review.attributes.Name}</h2>
 
-            <small>console list</small>
+            {review.attributes.categories.data.map((c) => (
+              <small key={c.id}>{c.attributes.Category}</small>
+            ))}
 
             <p>{review.attributes.Body.substring(0, 200)}...</p>
             <Link to={`/review/${review.id}`}>Read more</Link>
