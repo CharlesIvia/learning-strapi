@@ -24,10 +24,6 @@ export const Home = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  if (data) {
-    console.log(data.reviews.data);
-  }
-
   return (
     <div>
       {data &&
