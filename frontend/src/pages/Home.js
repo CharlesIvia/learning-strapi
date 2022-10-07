@@ -39,7 +39,7 @@ export const Home = () => {
             <small>console list</small>
 
             <p>{review.attributes.Body.substring(0, 200)}...</p>
-            <Link to={`/details/${review.attributes.id}`}>Read more</Link>
+            <Link to={`/review/${review.id}`}>Read more</Link>
           </div>
         ))}
     </div>
